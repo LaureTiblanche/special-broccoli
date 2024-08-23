@@ -33,7 +33,7 @@ For very long descriptions, it may be necessary to make several cards. In this c
 * **duration**
 * **requirement**
 * **defense**
-* **text** : mandatory - line breaks with <br> 
+* **text** : mandatory
 * **activity_name**
 * **activity_action**
 * **activity_text**
@@ -49,3 +49,29 @@ For very long descriptions, it may be necessary to make several cards. In this c
 * **heightened7**
 * **custom_color** : mandatory
 * **back_icon** : mandatory
+
+
+### Descriptions formatting Pro Tips :
+
+For a better formatting of your spells descriptions you can :
+
+Use bold with `<b>` and `</b>`, add lines breaks `<br>` and other html tags.
+
+**Add bullet lists** : bullet list are a separate property in Crobi's app and are not handled here. You must add them in "
+post-prod" formatting within the app.
+
+Transformation from the generated json :
+
+```
+text | my text followed by my list : item A, item B, item C And some more text description.
+```
+
+To in the app :
+
+```
+text | my text followed by my list :
+bullet | item A,
+bullet | item B,
+bullet | item C
+text | And some more text description.
+```
