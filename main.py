@@ -19,7 +19,7 @@ def generate_entries():
             level = line_input['level']
             raw_traits_common = line_input['trait_common']
             raw_traits_uncommon = line_input['trait_uncommon']
-            raw_domains = line_input['domains']
+            domains = line_input['domains']
             cast = line_input['cast']
             area = line_input['area']
             spell_range = line_input['range']
@@ -84,10 +84,8 @@ def generate_entries():
 
             contents.append('ruler')
 
-            if raw_domains:
-                for dom in raw_domains.split(','):
-                    contents.append(f'property | Domain | {dom}')
-
+            if domains:
+                contents.append(f'property | Domain | {domains}')
             if cast:
                 contents.append(f'property | Cast | {cast}')
             if area:
@@ -123,7 +121,7 @@ def generate_entries():
             contents.append(f'text | {text}')
             contents.append(f'fill | 1')
 
-            if critical_success or success or failure or critical_failure or heightened2 or heightened3 or heightened4 or heightened5 or heightened6 or heightened7:
+            if critical_success or success or failure or critical_failure or heightened2 or heightened3 or heightened4 or heightened5 or heightened6 or heightened7 or heightened8 or heightened9:
                 contents.append('ruler')
 
             if critical_success:
@@ -136,7 +134,7 @@ def generate_entries():
                 contents.append(f'property | Critical Failure | {critical_failure}')
 
             if (critical_success or success or failure or critical_failure) \
-                    and (heightened2 or heightened3 or heightened4 or heightened5 or heightened6 or heightened7):
+                    and (heightened2 or heightened3 or heightened4 or heightened5 or heightened6 or heightened7 or heightened8 or heightened9):
                 contents.append('p2e_ruler')
 
             if heightened2:
@@ -151,7 +149,10 @@ def generate_entries():
                 contents.append(f'property | Heightened (6) |  {heightened6}')
             if heightened7:
                 contents.append(f'property | Heightened (7) |  {heightened7}')
-
+            if heightened8:
+                contents.append(f'property | Heightened (8) |  {heightened8}')
+            if heightened9:
+                contents.append(f'property | Heightened (9) |  {heightened9}')
             json_properties['contents'] = contents
 
             entries.append(json_properties)
