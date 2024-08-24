@@ -43,6 +43,8 @@ def generate_entries():
             heightened5 = line_input['heightened5']
             heightened6 = line_input['heightened6']
             heightened7 = line_input['heightened7']
+            heightened8 = line_input['heightened8']
+            heightened9 = line_input['heightened9']
             custom_color = line_input['custom_color']
             back_icon = line_input['back_icon']
 
