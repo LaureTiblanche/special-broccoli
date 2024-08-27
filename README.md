@@ -1,29 +1,36 @@
 # Input for Pathfinder2 Cards
 
-This script take a .csv file and transform it into a "mochouille" .json to create Pathfinder cards with the [Crobi's Rpg-Cards Project](https://github.com/crobi/rpg-cards).
+This script take a .csv file and transform it into a "mochouille" .json to create Pathfinder cards with
+the [Crobi's Rpg-Cards Project](https://github.com/crobi/rpg-cards).
 
-### How to ? 
+### How to ?
 
-1- Insert your spells data into the `init_data.csv` : lists are separated with `,` and columns by `;`. 
+1. Insert your spells data into a csv file :
 
-2- Run the main script in any python3 env
+-> lists are separated with `,` and columns by `;`
+-> Create a csv file from the template file : `./expl/init_data.csv`
+-> Or add directly your data in `./expl/init_data.csv`
 
-3- upload the `result.json` file in the Rpg-Cards application ! 
+2. Run the main script in any python3 env : `python3 main [path_to_your_input_file]` ; If the path is empty the input
+   file will be `./expl/init_data.csv`
 
+3. upload the `result.json` file in the Rpg-Cards application (and finalize your lovely cards) !
 
 Notes :
 
 Some adjustments will need to be made afterwards (such as text size or line breaks) depending on the cards.
-For very long descriptions, it may be necessary to make several cards. In this case, use the map copy feature on the site and modify it directly.
+For very long descriptions, it may be necessary to make several cards. In this case, use the map copy feature on the
+site and modify it directly.
 
-### Input : 
+### Input :
 
 * **title** : mandatory
-* **action** : can be a list - values must be : 1 / 2 / 3 / free / reaction
-* **level** 
-* **trait_common** : can be a list
-* **trait_uncommon** : can be a list
-* **domains** : can be a list
+* **action** : can have multiple values - each value will create an icon - values must be : 1 / 2 / 3 / free / reaction
+* **level**
+* **trait_common** : can have multiple values - each value will create a separate tag
+* **trait_uncommon** : can have multiple values - each value will create a separate tag
+* **domains** : can have multiple values - all values will be displayed in the same property without alteration from the
+  input
 * **cast**
 * **area**
 * **range**
@@ -41,15 +48,18 @@ For very long descriptions, it may be necessary to make several cards. In this c
 * **success**
 * **failure**
 * **critical_failure**
+* **heightened1**
 * **heightened2**
 * **heightened3**
 * **heightened4**
 * **heightened5**
 * **heightened6**
 * **heightened7**
-* **custom_color** : mandatory
-* **back_icon** : mandatory
-
+* **heightened8**
+* **heightened9**
+* **custom_color** : mandatory - you can check values proposed by Crobi's app
+* **back_icon** : mandatory - from the [game-icons project](http://game-icons.net/) and
+  the [gameicons-font project](https://seiyria.com/gameicons-font). - check Crobi github for more information.
 
 ### Descriptions formatting Pro Tips :
 
@@ -57,7 +67,8 @@ For a better formatting of your spells descriptions you can :
 
 Use bold with `<b>` and `</b>`, add lines breaks `<br>` and other html tags.
 
-**Add bullet lists** : bullet list are a separate property in Crobi's app and are not handled here. You must add them in "
+**Add bullet lists** : bullet list are a separate property in Crobi's app and are not handled here. You must add them
+in "
 post-prod" formatting within the app.
 
 Transformation from the generated json :
@@ -75,3 +86,7 @@ bullet | item B,
 bullet | item C
 text | And some more text description.
 ```
+
+For better readability, you can reduce (or augment) the text size (by default 10px). You can also separate your spell
+into several cards with the "Duplicate Card" button. For your spell title, you can add a number in superscript like
+`My spell ¹` and `My spell ²`.

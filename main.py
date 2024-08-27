@@ -4,11 +4,11 @@ import json
 import sys
 
 
-def generate_entries():
+def generate_entries(file_name: str):
     entries = []
 
     # Open the basic docker-compose file and create new final file
-    with open('init_data.csv', 'r', newline='') as csv_input:
+    with (open(file_name, 'r', newline='') as csv_input):
         # Initiate CSV reader
         data_reader = csv.DictReader(csv_input, delimiter=';')
         for line_input in data_reader:
@@ -37,6 +37,7 @@ def generate_entries():
             success = line_input['success']
             failure = line_input['failure']
             critical_failure = line_input['critical_failure']
+            heightened1 = line_input['heightened1']
             heightened2 = line_input['heightened2']
             heightened3 = line_input['heightened3']
             heightened4 = line_input['heightened4']
@@ -123,7 +124,8 @@ def generate_entries():
             contents.append(f'text | {text}')
             contents.append(f'fill | 1')
 
-            if critical_success or success or failure or critical_failure or heightened2 or heightened3 or heightened4 or heightened5 or heightened6 or heightened7 or heightened8 or heightened9:
+            if critical_success or success or failure or critical_failure or heightened1 or heightened2 or heightened3 \
+                    or heightened4 or heightened5 or heightened6 or heightened7 or heightened8 or heightened9:
                 contents.append('ruler')
 
             if critical_success:
@@ -136,9 +138,12 @@ def generate_entries():
                 contents.append(f'property | Critical Failure | {critical_failure}')
 
             if (critical_success or success or failure or critical_failure) \
-                    and (heightened2 or heightened3 or heightened4 or heightened5 or heightened6 or heightened7 or heightened8 or heightened9):
+                    and (
+                    heightened1 or heightened2 or heightened3 or heightened4 or heightened5 or heightened6 or heightened7 or heightened8 or heightened9):
                 contents.append('p2e_ruler')
 
+            if heightened1:
+                contents.append(f'property | Heightened (1) |  {heightened1}')
             if heightened2:
                 contents.append(f'property | Heightened (2) |  {heightened2}')
             if heightened3:
@@ -163,8 +168,15 @@ def generate_entries():
 
 
 def main():
-    json_entries = generate_entries()
-    with open('result.json', 'w') as result_file:
+    #  Retrieve input file name or set a default :
+    try:
+        file_name = sys.argv[1]
+    except IndexError as index_error:
+        print('File name was not provided : defaulting to expl/init_data.csv.')
+        file_name = 'expl/init_data.csv'
+
+    json_entries = generate_entries(file_name)
+    with open('expl/result.json', 'w') as result_file:
         json.dump(json_entries, result_file)
 
 
