@@ -90,3 +90,9 @@ text | And some more text description.
 For better readability, you can reduce (or augment) the text size (by default 10px). You can also separate your spell
 into several cards with the "Duplicate Card" button. For your spell title, you can add a number in superscript like
 `My spell ¹` and `My spell ²`.
+
+Add spacing between cards on the printable page ? See the [tip from Rezenbekk](https://github.com/crobi/rpg-cards/issues/95#issuecomment-392575825) : 
+```
+Solution: go to generator/css/cards.css, add "margin:Xmm;" property to ".card" element, where X is your desired spacing size. 4 mm leaves quite a lot of space for easy cutting.
+```
+Note : For this solution, you must use a local Crobi's app and not his demo site. Ne need to rebuild the app, just regenerate your final page.
